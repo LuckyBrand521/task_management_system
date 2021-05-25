@@ -109,10 +109,11 @@ foreach($qry as $k => $v){
             {
                var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+               var user_id = <?php echo $_SESSION['login_id']?>;
                $.ajax({
                   url:"calendar/insert.php",
                   type:"POST",
-                  data:{title:title, start:start, end:end, project_id: $('input[name="project_id"]').val()},
+                  data:{title:title, start:start, end:end, project_id: $('input[name="project_id"]').val(), user_id: user_id},
                   success:function()
                   {
                   calendar.fullCalendar('refetchEvents');
